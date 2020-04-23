@@ -1,0 +1,33 @@
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+.container-max-width {
+    max-width: 74em;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.square{
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+    background-color: #7c6b6e;
+    margin: 0px 10px;
+}
+
+.btn-submit, .btn-done, .btn-task-complete, .btn-default {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    border-radius: 5px;
+  }
