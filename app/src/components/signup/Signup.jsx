@@ -10,7 +10,7 @@ class Signup extends Component {
             firstName: '',
             lastName: '',
             password: '',
-            showErrorMsg: false,
+            showErrorMsg: true,
         }
 
     }
@@ -39,7 +39,7 @@ class Signup extends Component {
                         <button type='submit' className='btn-submit'>Create Account</button>
                     </form>
                 </div >
-                {this.showErrorMsg && <div>Please provide valid inputs</div>}
+                {this.state.showErrorMsg && <div className='err-msg'>Please provide valid inputs</div>}
             </div>
         )
     }

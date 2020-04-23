@@ -1,3 +1,7 @@
+body{
+    background-color:  #40454b;
+    color:#ffffff;
+}
 
 img{
     width: 100%;
@@ -21,6 +25,12 @@ a {
     margin: 0px 10px;
 }
 
+.err-msg{
+    text-align: center;
+    color: #e9cfcd;
+    font-weight: bold;
+}
+
 .btn-submit, .btn-done, .btn-task-complete, .btn-default {
     background-color: #4CAF50;
     color: white;
@@ -30,4 +40,7 @@ a {
     cursor: pointer;
     width: 25%;
     border-radius: 5px;
+  }
+  input{
+      background-color: #dfebf1
   }
