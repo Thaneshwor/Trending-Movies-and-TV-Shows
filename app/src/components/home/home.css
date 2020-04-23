@@ -1,0 +1,12 @@
+.main-container-in{
+	display: flex;
+}
+
+.card-title{
+	padding: 10px;
+	text-align: center; 
+}
+
+.tvshow-container, .movie-container{
+	flex: 1;
+}
