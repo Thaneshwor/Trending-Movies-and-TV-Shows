@@ -28,7 +28,7 @@ class Navbar extends Component {
 
         return (
             <div className='nav-bar-container'>
-                <div className='nav-bar'>
+                <div className='nav-bar container-max-width'>
                     <div className='nav-bar-in'>
                         <div className='nav-bar-left'>
                             <h1>IMDB</h1>
