@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Card from '../card/Card';
+import SeriesCard from '../card/SeriesCard';
+import MovieCard from '../card/MovieCard';
 import { connect } from 'react-redux';
 import { fetchMovies, fetchTvSeries } from '../../actions/searchAction'
-import './home.css';
 import Spinner from '../spinner/Spinner';
-
+import './home.css';
 class Home extends Component {
 
   componentWillMount = () => {
@@ -17,7 +17,7 @@ class Home extends Component {
     const { series } = this.props;
     const { movies_loading } = this.props;
     const { series_loading } = this.props;
-    console.log(movies)
+
     return (
       <div className='main-container-out'>
         <div className='main-container-in container-max-width'>
@@ -29,7 +29,7 @@ class Home extends Component {
               <div>
                 {
                   series.map((ele) => (
-                    <Card key={ele.id} name={ele.name} vote_average={ele.vote_average} poster_path={ele.poster_path} />
+                    <MovieCard key={ele.id} movies={ele} />
                   ))
                 }
               </div> : <Spinner />
@@ -44,7 +44,7 @@ class Home extends Component {
               <div>
                 {
                   movies.map((ele) =>
-                    <Card key={ele.id} name={ele.title} vote_average={ele.vote_average} poster_path={ele.poster_path} />
+                    <SeriesCard key={ele.id} series={ele} />
                   )
                 }
               </div>
