@@ -1,7 +1,7 @@
 import { FETCH_FEV_MOVSER, SET_FEV_MOVSER, DELETE_FAV_MOVSER } from '../store/mutations';
 
 const initialState = {
-	movieSers: [],
+	favMovieSers: [],
 	loading: false,
 }
 
@@ -16,12 +16,12 @@ export default function (state = initialState, action) {
 		case SET_FEV_MOVSER:
 			return {
 				...state,
-				favMoviesSeries: [action.payload.data, ...state.movieSers],
+				favMoviesSeries: action.payload.data, ...state.favMovieSers,
 			};
 		case DELETE_FAV_MOVSER:
 			return {
 				...state,
-				movieSers: state.movieSers.filter(movser => movser.id !== action.payload)
+				favMovieSers: state.favMovieSers.filter(movser => movser.id !== action.payload)
 			};
 		default:
 			return state;
