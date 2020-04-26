@@ -18,6 +18,8 @@ export const getFevMovSers = () => (dispatch) => {
 };
 
 export const setFevMovSers = movser => dispatch => {
+    console.log('setting fav movies............')
+    console.log(localStorage('token'));
     axios.post('http://localhost:8080/api/favorites', movser, {
         headers: {
             'token': `${localStorage('token')}`
@@ -34,7 +36,7 @@ export const setFevMovSers = movser => dispatch => {
         })
 };
 
-export const delFetMovSer = id => dispatch => {
+export const delFevMovSer = id => dispatch => {
     axios.delete(`http://localhost:8080/api/favorites/${id}`, {
         headers: {
             'token': `${localStorage.getItem('token')}`
