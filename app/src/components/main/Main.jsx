@@ -1,22 +1,30 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+} from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 import Signin from '../signin/Signin';
 import Signup from '../signup/Signup';
-import Card from '../card/Card';
 import Home from '../home/Home';
+import AuthRoute from '../../routes/AuthRoute';
 
 class Main extends Component {
     render() {
         return (
-            <Fragment>
+            <Router>
                 <Navbar />
-                {/* <Signin /> */}
-                {/* <Signup /> */}
-                {/* <Card /> */}
-                <Home />
-            </Fragment>
+                <Switch>
+                    <Route exact path='/login' component={Signin}></Route>
+                    <Route exact path='/signup' component={Signup}></Route>
+                    <AuthRoute path='/home' component={Home} />
+                </Switch>
+
+            </Router>
         )
     }
 }
 
-export default Main; 
+export default Main;
