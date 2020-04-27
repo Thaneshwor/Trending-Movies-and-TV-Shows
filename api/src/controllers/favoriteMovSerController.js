@@ -17,10 +17,9 @@ import {
 
 const addFavourate = async (req, res) => {
     const { user_id } = req.user;
-    const { movies_info } = req.body;
+    const { movser } = req.body;
 
-    console.log(user_id, movies_info, '--------------------');
-    if (empty(movies_info)) {
+    if (empty(movser)) {
         errorMessage.error = 'Movies/Series information needed';
         return res.status(status.bad).send(errorMessage);
     }
@@ -30,7 +29,7 @@ const addFavourate = async (req, res) => {
           returning *`;
     const values = [
         user_id,
-        movies_info,
+        movser,
     ];
 
     try {
