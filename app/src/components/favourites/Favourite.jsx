@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { getFevMovSers } from '../../actions/favAction'
 import Spinner from '../spinner/Spinner';
 import '../home/home.css';
+
 class Favourite extends Component {
 
   componentWillMount = () => {
@@ -16,17 +17,13 @@ class Favourite extends Component {
     const { favMovSer } = this.props;
     const { loading } = this.props;
 
-    console.log(JSON.stringify(favMovSer));
-
     const mov = favMovSer.filter((ele) => {
       return ele.movies_info.isMovie === true;
     });
 
     const ser = favMovSer.filter((ele) => {
-      return ele.isMovie === false;
+      return ele.movies_info.isMovie === false;
     });
-
-    console.log(JSON.stringify(mov), 'are the movies in fav list')
 
     return (
       <div className='main-container-out'>
@@ -45,6 +42,8 @@ class Favourite extends Component {
               </div>
               : <Spinner />
             }
+
+            {ser.length === 0 ? <div className='empty-msg'>There are no favourite series</div> : ''}
           </div>
           <div className='movie-container'>
             <div className='card-title'>
@@ -60,6 +59,7 @@ class Favourite extends Component {
                 }
               </div> : <Spinner />
             }
+            {mov.length === 0 ? <div className='empty-msg'>There are no favourite movies</div> : ''}
           </div>
         </div>
       </div>

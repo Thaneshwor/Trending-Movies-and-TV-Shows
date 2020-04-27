@@ -61,14 +61,13 @@ const createUser = async (req, res) => {
     const { rows } = await dbQuery.query(createUserQuery, values);
     const dbResponse = rows[0];
     delete dbResponse.password;
-    console.log(dbResponse);
+
     const token = generateUserToken(dbResponse.email, dbResponse.id);
-    console.log('token =', token);
+
     successMessage.data = dbResponse;
     successMessage.data.token = token;
     return res.status(status.created).send(successMessage);
   } catch (error) {
-    console.log(error)
     if (error.routine === '_bt_check_unique') {
       errorMessage.error = 'User with that EMAIL already exist';
       return res.status(status.conflict).send(errorMessage);

@@ -5,13 +5,10 @@ import { connect } from 'react-redux';
 class AuthRoute extends Component {
     constructor(props) {
         super(props)
-        console.log('consturctor called....')
     }
 
 
     render() {
-
-        console.log('isAuthUser', this.props.isAuthUser)
         return (
             <div>
                 {this.props.isAuthUser ? < Route {...this.props} /> : <Redirect to='/login' />}
