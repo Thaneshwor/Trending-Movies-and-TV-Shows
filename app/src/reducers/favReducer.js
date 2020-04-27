@@ -2,7 +2,7 @@ import { FETCH_FEV_MOVSER, SET_FEV_MOVSER, DELETE_FAV_MOVSER } from '../store/mu
 
 const initialState = {
 	favMovieSers: [],
-	loading: false,
+	loading: true,
 }
 
 export default function (state = initialState, action) {
@@ -10,7 +10,7 @@ export default function (state = initialState, action) {
 		case FETCH_FEV_MOVSER:
 			return {
 				...state,
-				favMoviesSeries: action.payload,
+				favMovieSers: action.payload,
 				loading: false
 			};
 		case SET_FEV_MOVSER:
