@@ -4,7 +4,7 @@ import love from '../../assets/img/love.png';
 import nolove from '../../assets/img/love1.jpeg';
 import './card.css';
 import { delFevMovSer, setFevMovSers } from '../../actions/favAction';
-import { DELETE_FAV_MOVSER, SET_FEV_MOVSER } from '../../store/mutations';
+
 class MovieCard extends Component {
 
     constructor(props) {
@@ -12,7 +12,6 @@ class MovieCard extends Component {
 
         this.state = {
             favourite: false,
-
         }
     }
 
@@ -33,6 +32,9 @@ class MovieCard extends Component {
         if (!this.state.favourite) {
             this.props.movies.isMovie = true;
             this.props.setFevMovSers(this.props.movies);
+        } else {
+            alert('Are You sure')
+            this.props.delFevMovSer(this.props.movies.id);
         }
     }
 
