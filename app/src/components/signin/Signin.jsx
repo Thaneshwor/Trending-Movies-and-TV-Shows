@@ -31,7 +31,6 @@ class Signin extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.email)
         if (isValidEmail(this.state.email) && validatePassword(this.state.password)) {
             this.props.login(this.state);
         } else {
