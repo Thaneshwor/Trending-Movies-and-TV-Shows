@@ -1,28 +1,35 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../../actions/authAction';
+import { getFevMovSers } from '../../actions/favAction';
 import './navbar.css';
 
 class Navbar extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+    }
 
-        this.state = {
+    userLogout = () => {
+        this.props.logout();
+    }
 
-        }
-
-        this.isAuthenticated = false;
+    displayFavMovSer = () => {
+        this.props.getFevMovSers();
     }
 
     render() {
         const authLink = (
             <Fragment>
-                <li><a href='/signin'>Sign In</a></li>
-                <li><a href='/signup'>Sign Up</a></li>
+                <li><Link to='/login'>Sign In</Link></li>
+                <li><Link to='/sign-up'>Sign Up</Link></li>
             </Fragment>
         );
 
         const guestLink = (
             <Fragment>
-                <li><a href='/logout'>Log Out</a></li>
+                <li><Link to='/login' onMouseDown={this.userLogout}>Log Out</Link></li>
+                <li><Link to='/favourites' onMouseDown={this.getFevMovSers}>Favorite</Link></li>
             </Fragment>
         );
 
@@ -35,7 +42,7 @@ class Navbar extends Component {
                         </div>
                         <div className='nav-bar-right'>
                             <ul>
-                                {this.isAuthenticated ? guestLink : authLink}
+                                {this.props.isAuthenticated ? guestLink : authLink}
                             </ul>
                         </div>
                     </div>
@@ -45,4 +52,10 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated
+    }
+}
+
+export default connect(mapStateToProps, { logout, getFevMovSers })(Navbar);
