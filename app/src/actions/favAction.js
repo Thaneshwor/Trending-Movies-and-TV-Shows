@@ -17,12 +17,14 @@ export const getFevMovSers = () => (dispatch) => {
         })
 };
 
-export const setFevMovSers = movser => dispatch => {
-    console.log('setting fav movies............')
-    console.log(localStorage('token'));
-    axios.post('http://localhost:8080/api/favorites', movser, {
+export const setFevMovSers = movser1 => dispatch => {
+
+    let x = localStorage.getItem('token');
+    const movser = JSON.stringify(movser1);
+
+    axios.post('http://localhost:8080/api/favorites', { movser }, {
         headers: {
-            'token': `${localStorage('token')}`
+            'token': `${localStorage.getItem('token')}`
         }
     }).
         then(res => {
