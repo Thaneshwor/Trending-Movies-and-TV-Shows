@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SeriesCard from '../card/SeriesCard';
 import MovieCard from '../card/MovieCard';
+import * as t from '../../actions/favAction';
 import { connect } from 'react-redux';
 import { fetchMovies, fetchTvSeries } from '../../actions/searchAction'
 import Spinner from '../spinner/Spinner';
@@ -28,11 +29,12 @@ class Home extends Component {
             {!series_loading ?
               <div>
                 {
-                  series.map((ele) => (
-                    <MovieCard key={ele.id} movies={ele} />
-                  ))
+                  series.map((ele) =>
+                    <SeriesCard key={ele.id} series={ele} isMovie={false} isFavorite={false} />
+                  )
                 }
-              </div> : <Spinner />
+              </div>
+              : <Spinner />
             }
           </div>
           <div className='movie-container'>
@@ -40,17 +42,16 @@ class Home extends Component {
               <h2>Trending Movies</h2>
             </div>
 
+
             {!movies_loading ?
               <div>
                 {
-                  movies.map((ele) =>
-                    <SeriesCard key={ele.id} series={ele} />
-                  )
+                  movies.map((ele) => (
+                    <MovieCard key={ele.id} movies={ele} isMovie={true} isFavorite={false} />
+                  ))
                 }
-              </div>
-              : <Spinner />
+              </div> : <Spinner />
             }
-
           </div>
         </div>
       </div>
@@ -59,7 +60,6 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(typeof state.search.movies)
   return {
     movies: state.search.movies,
     series: state.search.series,
