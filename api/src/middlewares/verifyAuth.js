@@ -17,9 +17,8 @@ dotenv.config();
 
 const verifyToken = async (req, res, next) => {
 
-    console.log('verifying')
     const { token } = req.headers;
-    console.log(token)
+
     if (!token) {
         errorMessage.error = 'Token not provided';
         return res.status(status.bad).send(errorMessage);

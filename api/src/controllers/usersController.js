@@ -26,7 +26,6 @@ const createUser = async (req, res) => {
     email, firstName, lastName, password,
   } = req.body;
 
-
   const created_on = moment(new Date()).format('L');
 
   if (isEmpty(email) || isEmpty(firstName) || isEmpty(lastName)) {
