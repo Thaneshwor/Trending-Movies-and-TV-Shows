@@ -9,6 +9,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
+        case mutations.LOADING:
         case mutations.USER_LOADING:
             return {
                 ...state,
@@ -25,7 +26,7 @@ export default function (state = initialState, action) {
 
         case mutations.LOGIN_SUCCESS:
         case mutations.REGISTER_SUCCESS:
-            localStorage.setItem('token', action.payload.data.token);
+            localStorage.setItem('user', action.payload.data.token);
             return {
                 ...state,
                 user: action.payload.data.id,
@@ -38,7 +39,7 @@ export default function (state = initialState, action) {
         case mutations.LOGIN_FAIL:
         case mutations.LOGOUT_SUCCESS:
         case mutations.REGISTER_FAIL:
-            localStorage.removeItem('token');
+            localStorage.removeItem('user');
             return {
                 ...state,
                 token: null,
