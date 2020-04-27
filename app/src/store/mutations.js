@@ -1,3 +1,4 @@
+export const LOADING = 'LOADING';
 export const MOVIES_LOADING = 'MOVIES_LOADING';
 export const SERIES_LOADING = 'SERIES_LOADING';
 export const AUTHENTICATING = 'AUTHENTICATING';
