@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { login } from '../../actions/authAction';
+import { history } from '../../store/history';
 import './signin.css';
+import { isValidEmail, validatePassword } from '../../helpers/validations';
 
 class Signin extends Component {
 
@@ -13,8 +17,30 @@ class Signin extends Component {
         }
     }
 
+    componentDidUpdate = () => {
+        const { isAuthenticated } = this.props;
+
+        if (isAuthenticated) {
+            history.push('/home');
+        }
+    }
+
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state.email)
+        if (isValidEmail(this.state.email) && validatePassword(this.state.password)) {
+            this.props.login(this.state);
+        } else {
+            this.setState({
+                ...this.state,
+                showErrorMsg: true
+            })
+        }
+
     }
 
     render() {
@@ -37,4 +63,10 @@ class Signin extends Component {
     }
 }
 
-export default Signin;
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated
+    }
+}
+
+export default connect(mapStateToProps, { login })(Signin);
