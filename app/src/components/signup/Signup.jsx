@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { register, loading } from "../../actions/authAction";
+import { history } from '../../store/history';
+import { isValidEmail, validatePassword, isEmpty } from '../../helpers/validations'
 class Signup extends Component {
 
     constructor(props) {
@@ -10,17 +14,35 @@ class Signup extends Component {
             firstName: '',
             lastName: '',
             password: '',
-            showErrorMsg: true,
+            showErrorMsg: false,
         }
 
     }
 
+    componentDidUpdate = () => {
+        const { isAuthenticated } = this.props;
+        if (isAuthenticated) {
+            history.push('/home')
+        }
+    }
+
     onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value })
+        this.setState({ [e.target.name]: e.target.value, showErrorMsg: false })
     }
 
     handleSubmit = (e) => {
-        console.log('handle submit...');
+        e.preventDefault();
+        this.props.loading();
+
+        if (validatePassword(this.state.password) && isValidEmail(this.state.email) && !isEmpty(this.state.firstName) && !isEmpty(this.state.lastName)) {
+            this.props.register(this.state);
+        } else {
+            this.setState({
+                ...this.state,
+                showErrorMsg: true
+            })
+        }
+
     }
 
     render() {
@@ -45,4 +67,12 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+const mapStateToProps = (state) => {
+
+    return {
+        isLoading: state.auth.isLoading,
+        isAuthenticated: state.auth.isAuthenticated,
+    }
+}
+
+export default connect(mapStateToProps, { register, loading })(Signup);
