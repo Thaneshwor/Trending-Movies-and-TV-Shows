@@ -37,7 +37,6 @@ class SeriesCard extends Component {
             this.props.series.isMovie = false;
             this.props.setFevMovSers(this.props.series);
         } else {
-            alert('Are You sure')
             this.props.delFevMovSer(this.props.series.id);
         }
     }

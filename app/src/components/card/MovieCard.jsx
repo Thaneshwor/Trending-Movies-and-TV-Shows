@@ -33,7 +33,6 @@ class MovieCard extends Component {
             this.props.movies.isMovie = true;
             this.props.setFevMovSers(this.props.movies);
         } else {
-            alert('Are You sure')
             this.props.delFevMovSer(this.props.movies.id);
         }
     }
