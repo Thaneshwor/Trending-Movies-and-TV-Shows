@@ -3,7 +3,6 @@ import axios from 'axios';
 
 // Register User
 export const register = ({ email, firstName, lastName, password }) => dispatch => {
-    console.log(email, firstName, lastName, password)
     // Headers
     const config = {
         headers: {
@@ -36,7 +35,6 @@ export const login = ({ email, password }) => dispatch => {
             'Content-Type': 'application/json'
         }
     }
-    console.log(email, password)
     // Request body
     const body = JSON.stringify({ email, password })
 

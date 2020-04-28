@@ -22,11 +22,12 @@ export const setFevMovSers = movser1 => dispatch => {
     let x = localStorage.getItem('token');
     const movser = JSON.stringify(movser1);
 
-    axios.post('http://localhost:8080/api/favorites', { movser }, {
-        headers: {
-            'token': `${localStorage.getItem('token')}`
-        }
-    }).
+    axios.
+        post('http://localhost:8080/api/favorites', { movser }, {
+            headers: {
+                'token': `${localStorage.getItem('token')}`
+            }
+        }).
         then(res => {
             dispatch({
                 type: SET_FEV_MOVSER,
@@ -39,11 +40,12 @@ export const setFevMovSers = movser1 => dispatch => {
 };
 
 export const delFevMovSer = id => dispatch => {
-    axios.delete(`http://localhost:8080/api/favorites/${id}`, {
-        headers: {
-            'token': `${localStorage.getItem('token')}`
-        }
-    }).
+    axios.
+        delete(`http://localhost:8080/api/favorites/${id}`, {
+            headers: {
+                'token': `${localStorage.getItem('token')}`
+            }
+        }).
         then(res => {
             dispatch({
                 type: DELETE_FAV_MOVSER,

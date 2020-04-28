@@ -26,8 +26,8 @@ export default function (state = initialState, action) {
 
         case mutations.LOGIN_SUCCESS:
         case mutations.REGISTER_SUCCESS:
-            localStorage.setItem('user', JSON.stringify(action.payload.data));
             localStorage.setItem('isAuthenticated', true);
+            localStorage.setItem('token', action.payload.data.token)
             return {
                 ...state,
                 user: action.payload.data.id,
@@ -40,7 +40,7 @@ export default function (state = initialState, action) {
         case mutations.LOGIN_FAIL:
         case mutations.LOGOUT_SUCCESS:
         case mutations.REGISTER_FAIL:
-            localStorage.removeItem('user');
+            localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,

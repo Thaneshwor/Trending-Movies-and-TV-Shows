@@ -19,6 +19,7 @@ class Navbar extends Component {
     }
 
     render() {
+
         const authLink = (
             <Fragment>
                 <li><Link to='/login'>Sign In</Link></li>

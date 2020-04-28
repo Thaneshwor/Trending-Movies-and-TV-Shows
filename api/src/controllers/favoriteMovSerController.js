@@ -51,7 +51,6 @@ const addFavourate = async (req, res) => {
 
 const getAllFavourates = async (req, res) => {
     const { user_id } = req.user;
-
     const getAllFavMovSerQuery = 'SELECT * FROM favMovesSeries WHERE user_id = $1 ORDER BY id DESC';
     try {
         const { rows } = await dbQuery.query(getAllFavMovSerQuery, [user_id]);
