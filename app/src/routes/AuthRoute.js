@@ -19,7 +19,7 @@ class AuthRoute extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        isAuthUser: state.auth.isAuthenticated
+        isAuthUser: localStorage.getItem('isAuthenticated')
     }
 }
 

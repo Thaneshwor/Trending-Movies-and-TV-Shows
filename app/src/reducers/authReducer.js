@@ -2,7 +2,7 @@ import * as mutations from '../store/mutations';
 
 const initialState = {
     token: localStorage.getItem('token'),
-    isAuthenticated: null,
+    isAuthenticated: localStorage.getItem('isAuthenticated'),
     isLoading: false,
     user: null,
 }
@@ -26,7 +26,8 @@ export default function (state = initialState, action) {
 
         case mutations.LOGIN_SUCCESS:
         case mutations.REGISTER_SUCCESS:
-            localStorage.setItem('user', action.payload.data.token);
+            localStorage.setItem('user', JSON.stringify(action.payload.data));
+            localStorage.setItem('isAuthenticated', true);
             return {
                 ...state,
                 user: action.payload.data.id,
@@ -44,7 +45,7 @@ export default function (state = initialState, action) {
                 ...state,
                 token: null,
                 user: null,
-                isAuthenticated: false,
+                isAuthenticated: localStorage.removeItem('isAuthenticated'),
                 isLoading: false,
             };
 
