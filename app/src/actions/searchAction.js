@@ -12,7 +12,6 @@ export const fetchMovies = () => dispatch => {
 }
 
 export const fetchTvSeries = () => dispatch => {
-    console.log('fetching tv series')
     axios.get('https://api.themoviedb.org/3/tv/popular?api_key=7f2f9921b7434913f82ee5e53e3d3e16&language=en-US&page=1')
         .then(res => {
             dispatch(

@@ -1,86 +1,90 @@
-.nav-bar-container{
-    background-color: #4b6e7e;
-    widows: 100%;
+.nav-bar-container {
+  background-color: #4b6e7e;
+  widows: 100%;
 }
 
-.nav-bar{
-    padding: 40px 0;
+.nav-bar {
+  padding: 40px 0;
 }
 
-.nav-bar-in{
-    display: flex;
-    padding: 0 20px;
+.nav-bar-in {
+  display: flex;
+  padding: 0 20px;
 }
 
-.nav-bar-left{
-    flex: 1;
+.nav-bar-left {
+  flex: 1;
 }
 
-.nav-bar-right{
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    flex: 1;
-    justify-content: flex-end;
+.nav-bar-right {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
 }
-.nav-bar-left h1{
-    color: #fff;
-}
-
-.nav_btn{
-    background: transparent;
-    border:none;
-    background-color: rgb(147, 201, 142);
-}
-.nav-bar-right ul li{
-    display: inline;
-    padding: 14px 28px;
-    margin-right: 5px;
-    border-radius: 5px;
-    color: #fff;
-    background-color: rgb(147, 201, 142)
+.nav-bar-left h1 {
+  color: #fff;
 }
 
-.nav-bar-right ul li:hover{
-    background-color: rgb(202, 185, 185)
+.nav_btn {
+  background: transparent;
+  border: none;
+  background-color: rgb(147, 201, 142);
+}
+.nav-bar-right ul li {
+  display: inline;
+  padding: 14px 28px;
+  margin-right: 5px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: rgb(147, 201, 142);
+}
+
+.nav-bar-right ul li:hover {
+  background-color: rgb(202, 185, 185);
+}
+
+.logo {
+  color: #fff;
 }
 
 @media screen and (max-width: 768px) {
-    .nav-bar-left h1{
-        font-size: 25px;
-    } 
-    .nav-bar-right ul li{
-        padding: 12px 24px;
-        font-size: 12px;
-    }
+  .nav-bar-left h1 {
+    font-size: 25px;
+  }
+  .nav-bar-right ul li {
+    padding: 12px 24px;
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .nav-bar{
-        padding: 30px 0;
-    }
+  .nav-bar {
+    padding: 30px 0;
+  }
 
-    .nav-bar-left h1{
-        font-size: 19px;
-    } 
+  .nav-bar-left h1 {
+    font-size: 19px;
+  }
 
-    .nav-bar-right ul li{
-        padding: 11px 22px;
-        font-size: 11px;
-    }
+  .nav-bar-right ul li {
+    padding: 11px 22px;
+    font-size: 11px;
+  }
 }
 
 @media screen and (max-width: 320px) {
-    .nav-bar{
-        padding: 20px 0;
-    }
+  .nav-bar {
+    padding: 20px 0;
+  }
 
-    .nav-bar-left h1{
-        font-size: 19px;
-    }
+  .nav-bar-left h1 {
+    font-size: 19px;
+  }
 
-    .nav-bar-right ul li{
-        padding: 5px 10px;
-        font-size: 11px;
-    }
+  .nav-bar-right ul li {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
 }

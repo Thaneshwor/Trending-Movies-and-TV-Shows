@@ -1,25 +1,23 @@
-import pool from './pool';
+import pool from "./pool";
 
 export default {
-
   /*
-  * DB Query
+   * DB Query
    * @param {object} req
    * @param {object} res
    * @returns {object} object
-  */
+   */
 
   query(quertText, params) {
-
     return new Promise((resolve, reject) => {
-      pool.query(quertText, params)
-        .then((res) => {
+      pool
+        .query(quertText, params)
+        .then(res => {
           resolve(res);
         })
-        .catch((err) => {
+        .catch(err => {
           reject(err);
         });
     });
-  },
-
+  }
 };

@@ -1,72 +1,74 @@
 /* eslint-disable camelcase */
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
 dotenv.config();
 
 /**
-   * Hash Password Method
-   * @param {string} password
-   * @returns {string} returns hashed password
-   */
+ * Hash Password Method
+ * @param {string} password
+ * @returns {string} returns hashed password
+ */
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
 const hashPassword = password => bcrypt.hashSync(password, salt);
 
 /**
-   * comparePassword
-   * @param {string} hashPassword
-   * @param {string} password
-   * @returns {Boolean} return True or False
-   */
+ * comparePassword
+ * @param {string} hashPassword
+ * @param {string} password
+ * @returns {Boolean} return True or False
+ */
 const comparePassword = (hashedPassword, password) => {
   return bcrypt.compareSync(password, hashedPassword);
 };
 
 /**
-* isValidEmail helper method
-* @param {string} email
-* @returns {Boolean} True or False
-*/
-const isValidEmail = (email) => {
+ * isValidEmail helper method
+ * @param {string} email
+ * @returns {Boolean} True or False
+ */
+const isValidEmail = email => {
   const regEx = /\S+@\S+\.\S+/;
   return regEx.test(email);
 };
 
 /**
-* validatePassword helper method
-* @param {string} password
-* @returns {Boolean} True or False
-*/
-const validatePassword = (password) => {
-  if (password.length <= 5 || password === '') {
+ * validatePassword helper method
+ * @param {string} password
+ * @returns {Boolean} True or False
+ */
+const validatePassword = password => {
+  if (password.length <= 5 || password === "") {
     return false;
-  } return true;
+  }
+  return true;
 };
 
 /**
-* isEmpty helper method
-* @param {string, integer} input
-* @returns {Boolean} True or False
-*/
-const isEmpty = (input) => {
-  if (input === undefined || input === '') {
+ * isEmpty helper method
+ * @param {string, integer} input
+ * @returns {Boolean} True or False
+ */
+const isEmpty = input => {
+  if (input === undefined || input === "") {
     return true;
   }
-  if (input.replace(/\s/g, '').length) {
+  if (input.replace(/\s/g, "").length) {
     return false;
-  } return true;
+  }
+  return true;
 };
 
 /**
-   * empty helper method
-   * @param {string, integer} input
-   * @returns {Boolean} True or False
-   */
-const empty = (input) => {
-  if (input === undefined || input === '') {
+ * empty helper method
+ * @param {string, integer} input
+ * @returns {Boolean} True or False
+ */
+const empty = input => {
+  if (input === undefined || input === "") {
     return true;
   }
 };
@@ -77,17 +79,16 @@ const empty = (input) => {
  * @returns {string} token
  */
 const generateUserToken = (email, id) => {
-
   const token = jwt.sign(
     {
       email,
       user_id: id
     },
-    process.env.SECRET_KEY, { expiresIn: '1d' }
+    process.env.SECRET_KEY,
+    { expiresIn: "1d" }
   );
   return token;
 };
-
 
 export {
   isValidEmail,
@@ -96,5 +97,5 @@ export {
   empty,
   generateUserToken,
   hashPassword,
-  comparePassword,
+  comparePassword
 };
