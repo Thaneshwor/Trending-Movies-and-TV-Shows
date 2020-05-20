@@ -19,6 +19,35 @@ const addFavourate = async (req, res) => {
     errorMessage.error = "Movies/Series information needed";
     return res.status(status.bad).send(errorMessage);
   }
+  // const isFavMovieExist = "SELECT * FROM  favMovesSeries WHERE original_name =?";
+
+  const isFavMovieExist = "SELECT * FROM  favMovesSeries";
+
+  try {
+    const original_name = JSON.parse(movser).original_name;
+    const original_title = JSON.parse(movser).original_title;
+
+    const { rows } = await dbQuery.query(isFavMovieExist);
+
+    const series = rows.find(
+      row =>
+        row.movies_info.original_name === original_name &&
+        original_name != undefined
+    );
+
+    const movie = rows.find(
+      row =>
+        row.movies_info.original_title === original_title &&
+        original_title != undefined
+    );
+
+    if (series || movie) {
+      return res.status(status.success).send("Already in favourate list");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+
   const addFavMovieQuery = `INSERT INTO
     favMovesSeries(user_id, movies_info)
           VALUES($1, $2)
