@@ -1,0 +1,50 @@
+.card {
+  display: flex;
+  padding: 10px;
+  margin: 10px 20px;
+  background-color: #33363d;
+}
+
+.img-card {
+  flex: 1;
+}
+
+.desc-movie {
+  flex: 2;
+}
+
+.img-card-box {
+  position: relative;
+  width: auto;
+  height: 180px;
+  padding-right: 10px;
+}
+
+.img-card-box img {
+  height: 100%;
+  width: 100%;
+}
+
+.favourite {
+  width: 20px;
+}
+
+.rating-container {
+  width: 100%;
+  padding: 5px;
+  display: flex;
+}
+
+.rating {
+  flex: 1;
+}
+
+.fav {
+  flex: 1;
+  text-align: right;
+}
+
+.btn-fav {
+  background-color: #33363d;
+  border: none;
+}
